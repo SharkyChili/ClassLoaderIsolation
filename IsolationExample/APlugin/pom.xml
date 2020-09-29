@@ -1,25 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>IsolationExample</artifactId>
+    <groupId>org.wayne</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.wayne</groupId>
-  <artifactId>Isolation</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <artifactId>APlugin</artifactId>
 
-  <packaging>pom</packaging>
-
-  <name>Isolation</name>
+  <name>APlugin</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
-
-  <modules>
-    <module>Adriver</module>
-    <module>Bdriver</module>
-    <module>ConflictExample</module>
-    <module>IsolationExample</module>
-  </modules>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
