@@ -8,7 +8,7 @@ import java.util.concurrent.Executor;
 public class WayneConnection implements Connection{
     @Override
     public Statement createStatement() throws SQLException {
-        System.out.println("Bdriver createStatement");
+        System.out.println("2.0-SNAPSHOT");
         return null;
     }
 
