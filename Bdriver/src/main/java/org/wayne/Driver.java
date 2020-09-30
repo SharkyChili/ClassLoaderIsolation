@@ -27,13 +27,16 @@ public class Driver implements java.sql.Driver{
 
     @Override
     public Connection connect(String url, Properties info) throws SQLException {
-        System.out.println("Bdriver");
+        System.out.println("Bdriver connect");
         Properties properties = new Properties();
         return makeConnection(url,properties);
     }
 
     private static Connection makeConnection(String url, Properties props) throws SQLException {
-        return new WayneConnection();
+        if(url.contains("wayne")){
+            return new WayneConnection();
+        }
+        return null;
     }
 
     @Override

@@ -11,6 +11,7 @@ public class WayneConnection implements java.sql.Connection{
 
     @Override
     public Statement createStatement() throws SQLException {
+        System.out.println("Adriver createStatement");
         return null;
     }
 
