@@ -15,5 +15,9 @@ public class App
         Connection conn = DriverManager.getConnection("jdbc:wayne://172.19.1.49:7300/dwtmppdb");
         Statement statement = conn.createStatement();
 
+        /*Class.forName("org.wayne.Driver");
+        Connection connection = DriverManager.getConnection("jdbc:wayne://172.19.1.49:7300/dwtmppdb");
+        Statement statement1 = conn.createStatement();*/
+
     }
 }

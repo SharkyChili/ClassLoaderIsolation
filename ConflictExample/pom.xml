@@ -24,12 +24,17 @@
 
     <dependencies>
 
-        <dependency>
+<!--        <dependency>
             <groupId>org.wayne</groupId>
             <artifactId>Adriver</artifactId>
             <version>1.0-SNAPSHOT</version>
-        </dependency>
+        </dependency>-->
 
+        <dependency>
+            <groupId>org.wayne</groupId>
+            <artifactId>Bdriver</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 
 
         <dependency>
