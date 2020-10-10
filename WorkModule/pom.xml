@@ -33,5 +33,57 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptors>
+                        <descriptor>src/assembly/assembly.xml</descriptor>
+                    </descriptors>
+                    <finalName>WorkModule</finalName>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <outputDirectory>${project.parent.parent.build.directory}</outputDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <!--                <configuration>
+                                    <archive>
+                                        <manifest>
+                                            <mainClass>com.dfjx.diy.DataSync</mainClass>
+                                        </manifest>
+                                        <manifestEntries>
+                                            <Class-Path>.</Class-Path>
+                                        </manifestEntries>
+                                    </archive>
+                                    &lt;!&ndash;<descriptorRefs>
+                                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                                    </descriptorRefs>&ndash;&gt;
+                                </configuration>
+                                <executions>
+                                    <execution>
+                                        <id>make-assembly</id>
+                                        <phase>package</phase>
+                                        <goals>
+                                            <goal>single</goal>
+                                        </goals>
+                                        <configuration>
+                                            <descriptors>
+                                                <descriptor>src/assembly/assembly.xml</descriptor>
+                                            </descriptors>
+                                        </configuration>
+                                    </execution>
+                                </executions>-->
+            </plugin>
+        </plugins>
+    </build>
+
+
 
 </project>

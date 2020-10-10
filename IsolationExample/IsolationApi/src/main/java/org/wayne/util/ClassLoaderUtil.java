@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class ClassLoaderUtil {
 
-    public static String getModuleName(EnvEnum envEnum){
+    public static String getRelativePath(EnvEnum envEnum){
         String[] strings = {
                 "target",
                 envEnum.toString(),

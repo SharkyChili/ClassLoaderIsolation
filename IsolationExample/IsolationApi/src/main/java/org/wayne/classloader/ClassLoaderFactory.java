@@ -3,6 +3,7 @@ package org.wayne.classloader;
 import org.wayne.enums.EnvEnum;
 import org.wayne.util.ClassLoaderUtil;
 
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,8 +26,15 @@ public class ClassLoaderFactory {
     private static SelfDefinedClassLoader buildCL(EnvEnum envEnum){
         //首先拿到path
         //todo 这个path肯定要改的
-        String path = ClassLoaderUtil.getModuleName(envEnum);
+        String path = ClassLoaderUtil.getRelativePath(envEnum);
         //todo
+        //拿到项目根路径
+        String path1 = ClassLoaderFactory.class.getClassLoader().getResource("").getPath();
+        String[] isolationExamples = path1.split("IsolationExample");
+
+        System.out.println("path: " + path);
+        System.out.println("path1: "+ path1);
+
         return new SelfDefinedClassLoader(path);
     }
 }
