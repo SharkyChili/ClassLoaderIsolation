@@ -12,9 +12,14 @@ import java.sql.Statement;
  *
  */
 public class App {
-    public void registerDriver(String driver) throws Exception{
-        Class.forName("org.wayne.Driver");
+    static {
+        try {
+            Class.forName("org.wayne.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
+
 
     public Connection getConnection(String url) throws Exception{
 //        Class.forName("org.wayne.Driver");
