@@ -27,7 +27,7 @@ public class Driver implements java.sql.Driver{
 
     @Override
     public Connection connect(String url, Properties info) throws SQLException {
-        System.out.println("2.0-SNAPSHOT");
+        System.out.println("B-1.0-SNAPSHOT");
         Properties properties = new Properties();
         return makeConnection(url,properties);
     }
@@ -41,37 +41,37 @@ public class Driver implements java.sql.Driver{
 
     @Override
     public boolean acceptsURL(String url) throws SQLException {
-        System.out.println("2.0-SNAPSHOT");
+        System.out.println("B-1.0-SNAPSHOT");
         return false;
     }
 
     @Override
     public DriverPropertyInfo[] getPropertyInfo(String url, Properties info) throws SQLException {
-        System.out.println("2.0-SNAPSHOT");
+        System.out.println("B-1.0-SNAPSHOT");
         return new DriverPropertyInfo[0];
     }
 
     @Override
     public int getMajorVersion() {
-        System.out.println("2.0-SNAPSHOT");
+        System.out.println("B-1.0-SNAPSHOT");
         return 0;
     }
 
     @Override
     public int getMinorVersion() {
-        System.out.println("2.0-SNAPSHOT");
+        System.out.println("B-1.0-SNAPSHOT");
         return 0;
     }
 
     @Override
     public boolean jdbcCompliant() {
-        System.out.println("2.0-SNAPSHOT");
+        System.out.println("B-1.0-SNAPSHOT");
         return false;
     }
 
     @Override
     public Logger getParentLogger() throws SQLFeatureNotSupportedException {
-        System.out.println("2.0-SNAPSHOT");
+        System.out.println("B-1.0-SNAPSHOT");
         return null;
     }
 }
