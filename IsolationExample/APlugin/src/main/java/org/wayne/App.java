@@ -32,5 +32,9 @@ public class App {
         return statement;
     }
 
+    public void met(){
+        System.out.println("APlugin met");
+    }
+
 
 }

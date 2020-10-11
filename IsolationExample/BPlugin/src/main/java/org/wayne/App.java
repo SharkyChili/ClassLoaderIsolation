@@ -30,4 +30,8 @@ public class App {
         Statement statement = conn.createStatement();
         return statement;
     }
+
+    public void met(){
+        System.out.println("BPlugin met");
+    }
 }

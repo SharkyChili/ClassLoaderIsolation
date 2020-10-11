@@ -8,4 +8,8 @@ public class App {
 
     }
 
+    public void met(){
+        System.out.println("IsolationApi met");
+    }
+
 }

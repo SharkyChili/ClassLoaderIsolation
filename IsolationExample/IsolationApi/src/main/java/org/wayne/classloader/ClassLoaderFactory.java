@@ -29,10 +29,10 @@ public class ClassLoaderFactory {
         //todo 这个path肯定要改的
 //        System.out.println("buildCL");
         String pluginPath = ClassLoaderUtil.getRelativePath(envEnum);
-        System.out.println(pluginPath);
+//        System.out.println(pluginPath);
         //拿到项目根路径
 //        System.out.println(ClassLoaderFactory.class.getClassLoader());
-        System.out.println(ClassLoaderFactory.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+        //System.out.println(ClassLoaderFactory.class.getProtectionDomain().getCodeSource().getLocation().getPath());
 //        System.out.println(ClassLoaderFactory.class.getClassLoader().getResource("/"));
 //        String path1 = ClassLoaderFactory.class.getClassLoader().getResource("/").getPath();
         String jarPath = ClassLoaderFactory.class.getProtectionDomain().getCodeSource().getLocation().getPath();
@@ -40,8 +40,8 @@ public class ClassLoaderFactory {
         String[] projectPath = jarPath.split("target");
 
         String dependencyPath =
-                projectPath[0] + File.separator + pluginPath;
-        System.out.println("dependencyPath" + dependencyPath);
+                projectPath[0] + pluginPath;
+//        System.out.println("dependencyPath" + dependencyPath);
         return new SelfDefinedClassLoader(dependencyPath);
     }
 }
