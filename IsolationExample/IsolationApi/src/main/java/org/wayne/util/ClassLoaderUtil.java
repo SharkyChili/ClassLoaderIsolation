@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 public class ClassLoaderUtil {
 
     public static String getRelativePath(EnvEnum envEnum){
+//        System.out.println("getRelativePath");
         String[] strings = {
                 "target",
                 envEnum.toString(),

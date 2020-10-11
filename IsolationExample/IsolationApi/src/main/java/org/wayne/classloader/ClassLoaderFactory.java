@@ -3,6 +3,7 @@ package org.wayne.classloader;
 import org.wayne.enums.EnvEnum;
 import org.wayne.util.ClassLoaderUtil;
 
+import java.io.File;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,15 +27,21 @@ public class ClassLoaderFactory {
     private static SelfDefinedClassLoader buildCL(EnvEnum envEnum){
         //首先拿到path
         //todo 这个path肯定要改的
-        String path = ClassLoaderUtil.getRelativePath(envEnum);
-        //todo
+//        System.out.println("buildCL");
+        String pluginPath = ClassLoaderUtil.getRelativePath(envEnum);
+        System.out.println(pluginPath);
         //拿到项目根路径
-        String path1 = ClassLoaderFactory.class.getClassLoader().getResource("").getPath();
-        String[] isolationExamples = path1.split("IsolationExample");
+//        System.out.println(ClassLoaderFactory.class.getClassLoader());
+        System.out.println(ClassLoaderFactory.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+//        System.out.println(ClassLoaderFactory.class.getClassLoader().getResource("/"));
+//        String path1 = ClassLoaderFactory.class.getClassLoader().getResource("/").getPath();
+        String jarPath = ClassLoaderFactory.class.getProtectionDomain().getCodeSource().getLocation().getPath();
 
-        System.out.println("path: " + path);
-        System.out.println("path1: "+ path1);
+        String[] projectPath = jarPath.split("target");
 
-        return new SelfDefinedClassLoader(path);
+        String dependencyPath =
+                projectPath[0] + File.separator + pluginPath;
+        System.out.println("dependencyPath" + dependencyPath);
+        return new SelfDefinedClassLoader(dependencyPath);
     }
 }

@@ -1,8 +1,12 @@
 package org.wayne.classloader;
 
+import java.io.File;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.net.URLStreamHandlerFactory;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SelfDefinedClassLoader extends URLClassLoader {
 
@@ -28,7 +32,16 @@ public class SelfDefinedClassLoader extends URLClassLoader {
     }
 
     private static URL[] buildURLs(String path){
-        //todo
-        return null;
+        List<URL> urls = new ArrayList<>();
+        File jarPath = new File(path);
+        URL url;
+        try {
+            url = jarPath.toURI().toURL();
+        } catch (MalformedURLException e) {
+            throw new RuntimeException("something goes wrong when load jars.");
+        }
+        urls.add(url);
+        URL[] array = urls.toArray(new URL[0]);
+        return array;
     }
 }

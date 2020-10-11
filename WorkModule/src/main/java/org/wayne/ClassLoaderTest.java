@@ -1,4 +1,4 @@
-package wayne;
+package org.wayne;
 
 import org.wayne.classloader.ClassLoaderFactory;
 import org.wayne.classloader.SelfDefinedClassLoader;
@@ -10,6 +10,7 @@ public class ClassLoaderTest {
         Class<?> aClass = null;
         try {
             aClass = loader.loadClass("org.wayne.App");
+
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
