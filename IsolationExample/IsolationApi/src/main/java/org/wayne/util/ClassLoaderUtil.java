@@ -37,7 +37,7 @@ public class ClassLoaderUtil {
 
 
 
-    public static SelfDefinedClassLoader getSelfDefinedClassLoader(){
+    public static SelfDefinedClassLoader getSelfDefinedClassLoaderByEnvironment(){
         EnvEnum env = EnvironmentUtil.getEnv();
         SelfDefinedClassLoader loader = ClassLoaderFactory.getSelfDefinedClassLoader(env);
         return loader;
