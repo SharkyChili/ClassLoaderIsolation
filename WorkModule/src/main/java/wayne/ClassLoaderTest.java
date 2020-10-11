@@ -1,4 +1,4 @@
-package org.wayne;
+package wayne;
 
 import org.wayne.classloader.ClassLoaderFactory;
 import org.wayne.classloader.SelfDefinedClassLoader;
