@@ -17,7 +17,7 @@ public class SelfDefinedClassLoader extends URLClassLoader {
     public SelfDefinedClassLoader(String path) {
         //父加载器用SelfDefinedClassLoader的加载器，此时多半是ApplicationClassLoader
         this(path, SelfDefinedClassLoader.class.getClassLoader());
-        System.out.println("SelfDefinedClassLoader parent :" + SelfDefinedClassLoader.class.getClassLoader());
+        //System.out.println("SelfDefinedClassLoader parent :" + SelfDefinedClassLoader.class.getClassLoader());
     }
 
     public SelfDefinedClassLoader(String path, ClassLoader parent) {

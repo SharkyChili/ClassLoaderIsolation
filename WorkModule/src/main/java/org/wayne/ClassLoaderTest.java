@@ -8,9 +8,43 @@ import org.wayne.util.EnvironmentUtil;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class ClassLoaderTest {
     public static void main(String[] args) {
+//        test1();
+        test2();
+    }
+
+    public static void test2(){
+        ClassLoaderTest classLoaderTest = new ClassLoaderTest();
+        EnvironmentUtil.setEnv(EnvEnum.A);
+        classLoaderTest.testRegisterAndConnection();
+        EnvironmentUtil.clearEnv();
+
+        EnvironmentUtil.setEnv(EnvEnum.B);
+        classLoaderTest.testRegisterAndConnection();
+        EnvironmentUtil.clearEnv();
+
+    }
+
+    public void testRegisterAndConnection(){
+        RegisterDriverUtil.register("org.wayne.Driver");
+
+        Connection connection = null;
+        try {
+            connection = DriverManagerUtil.getConnection("jdbc:wayne://172.19.1.49:7300/dwtmppdb");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println(connection.getClass().getName());
+        System.out.println(connection.getClass().getClassLoader());
+    }
+
+    public static void test1(){
         ClassLoaderTest classLoaderTest = new ClassLoaderTest();
         EnvironmentUtil.setEnv(EnvEnum.A);
         classLoaderTest.testCL();
@@ -20,6 +54,7 @@ public class ClassLoaderTest {
         classLoaderTest.testCL();
         EnvironmentUtil.clearEnv();
     }
+
 
     public void testCL(){
         SelfDefinedClassLoader loader = ClassLoaderUtil.getSelfDefinedClassLoaderByEnvironment();

@@ -16,6 +16,9 @@ public class ClassLoaderUtil {
         return t;
     }
 
+
+
+
     public static <T> T getPluginInstanceByEnvironment(Class<T> type, EnvEnum envEnum){
         SelfDefinedClassLoader loader = ClassLoaderFactory.getSelfDefinedClassLoader(envEnum);
         Class<?> aClass = null;
@@ -32,6 +35,23 @@ public class ClassLoaderUtil {
         }
         T cast = type.cast(newInstance);
         return cast;
+    }
+
+    public static Class getPluginClass(Class type){
+        EnvEnum env = EnvironmentUtil.getEnv();
+        Class aClass = ClassLoaderUtil.getPluginClassByEnvironment(type, env);
+        return aClass;
+    }
+
+    public static Class getPluginClassByEnvironment(Class type, EnvEnum envEnum){
+        SelfDefinedClassLoader loader = ClassLoaderFactory.getSelfDefinedClassLoader(envEnum);
+        Class<?> aClass = null;
+        try {
+            aClass = loader.loadClass(type.getName());
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return aClass;
     }
 
 

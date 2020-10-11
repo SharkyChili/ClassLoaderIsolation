@@ -16,7 +16,9 @@ public class Driver implements java.sql.Driver{
             // because some clients call the driver themselves (I know, as
             // my early jdbc work did - and that was based on other examples).
             // Placing it here, means that the driver is registered once only.
-            java.sql.DriverManager.registerDriver(new Driver());
+            Driver driver = new Driver();
+            System.out.println("Bdriver register " + driver.getClass().getClassLoader());
+            java.sql.DriverManager.registerDriver(driver);
         }
         catch (SQLException e)
         {
