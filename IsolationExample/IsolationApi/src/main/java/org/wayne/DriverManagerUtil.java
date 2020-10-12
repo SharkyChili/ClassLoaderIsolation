@@ -16,10 +16,13 @@ public class DriverManagerUtil {
             Method method = pluginClass.getDeclaredMethod("getConnection", String.class);
             method.setAccessible(true);
             invoke = method.invoke(pluginClass.newInstance(), url);
+            System.out.println("invoke : " + invoke.getClass().getClassLoader());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
         connection = (Connection)invoke;
+        System.out.println("Connection : " + Connection.class.getClassLoader());
+        System.out.println("connection : " + connection.getClass().getClassLoader());
         return connection;
     }
 }

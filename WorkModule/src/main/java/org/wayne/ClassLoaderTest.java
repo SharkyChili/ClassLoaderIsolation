@@ -42,6 +42,8 @@ public class ClassLoaderTest {
         }
         System.out.println(connection.getClass().getName());
         System.out.println(connection.getClass().getClassLoader());
+
+//        Statement statement = connection.createStatement();
     }
 
     public static void test1(){
