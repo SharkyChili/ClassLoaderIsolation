@@ -3,9 +3,27 @@ package org.wayne.util;
 import org.wayne.classloader.SelfDefinedClassLoader;
 import org.wayne.enums.EnvEnum;
 
+import java.util.Arrays;
+import java.util.Optional;
+
 public class EnvironmentUtil {
     private static final ThreadLocal<EnvEnum> env = new ThreadLocal<>();
 //    private static final ThreadLocal<ClassLoader> oldClassLoader = new ThreadLocal<>();
+
+    public static void setEnvBySystemParam(){
+        String env = System.getProperty("env");
+        Optional<EnvEnum> optionalEnvEnum = Arrays.stream(EnvEnum.values())
+                .filter(
+                        envEnum -> envEnum.toString().equalsIgnoreCase(env)
+                ).findAny();
+        optionalEnvEnum.ifPresent(
+                envEnum -> {EnvironmentUtil.setEnv(envEnum);}
+        );
+        if(!optionalEnvEnum.isPresent()){
+            throw new RuntimeException(" java -cp/-jar should -Denv=\"A\" or -Denv=\"B\" ");
+        }
+    }
+
 
     public static void setEnv(EnvEnum envEnum){
         if(env.get()!=null){

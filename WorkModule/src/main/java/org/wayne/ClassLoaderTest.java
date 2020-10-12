@@ -16,8 +16,23 @@ import java.sql.Statement;
 public class ClassLoaderTest {
     public static void main(String[] args) {
 //        test1();
-        test2();
+//        test2();
+        test3();
     }
+
+    /**
+     *
+     *     java -Denv="A"  -cp WorkModule_WithDenpendency.jar org.wayne.ClassLoaderTest
+     *     or
+     *     java -Denv="B"  -cp WorkModule_WithDenpendency.jar org.wayne.ClassLoaderTest
+     */
+    public static void test3(){
+        ClassLoaderTest classLoaderTest = new ClassLoaderTest();
+        EnvironmentUtil.setEnvBySystemParam();
+        classLoaderTest.testRegisterAndConnection();
+    }
+
+
 
     public static void test2(){
         ClassLoaderTest classLoaderTest = new ClassLoaderTest();
