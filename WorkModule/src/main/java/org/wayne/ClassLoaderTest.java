@@ -25,6 +25,8 @@ public class ClassLoaderTest {
         classLoaderTest.testRegisterAndConnection();
         EnvironmentUtil.clearEnv();
 
+        System.out.println("*****************************");
+
         EnvironmentUtil.setEnv(EnvEnum.B);
         classLoaderTest.testRegisterAndConnection();
         EnvironmentUtil.clearEnv();
@@ -40,10 +42,27 @@ public class ClassLoaderTest {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println(connection.getClass().getName());
-        System.out.println(connection.getClass().getClassLoader());
+        System.out.println("----");
+        System.out.println("connection : " + connection);
+        System.out.println("connection : " + connection.getClass().getName());
+        System.out.println("connection : " + connection.getClass().getClassLoader());
+        System.out.println("Connection Class : " + Connection.class.getClassLoader());
+        System.out.println("----");
 
-//        Statement statement = connection.createStatement();
+        Statement statement = null;
+        try {
+            statement = connection.createStatement();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        if(statement!=null){
+            System.out.println("statement : " + statement);
+            System.out.println("statement : " + statement.getClass().getName());
+            System.out.println("statement : " + statement.getClass().getClassLoader());
+            System.out.println("Statement Class : " + Statement.class.getClassLoader());
+        }else {
+            System.out.println("statement : null");
+        }
     }
 
     public static void test1(){
