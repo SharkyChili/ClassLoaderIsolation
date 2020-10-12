@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Optional;
 
 public class EnvironmentUtil {
-    private static final ThreadLocal<EnvEnum> env = new ThreadLocal<>();
+    private static final ThreadLocal<EnvEnum> env = new InheritableThreadLocal<>();
 //    private static final ThreadLocal<ClassLoader> oldClassLoader = new ThreadLocal<>();
 
     public static void setEnvBySystemParam(){
