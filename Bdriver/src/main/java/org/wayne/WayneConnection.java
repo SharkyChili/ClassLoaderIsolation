@@ -9,7 +9,13 @@ public class WayneConnection implements Connection{
     @Override
     public Statement createStatement() throws SQLException {
         System.out.println("B-1.0-SNAPSHOT");
-        return new WayneStatement();
+        Statement statement = new WayneStatement();
+        System.out.println("statement : " + statement);
+        System.out.println("statement : " + statement.getClass().getName());
+        System.out.println("statement : " + statement.getClass().getClassLoader());
+        System.out.println("Statement Class : " + Statement.class.getClassLoader());
+
+        return statement;
     }
 
     @Override

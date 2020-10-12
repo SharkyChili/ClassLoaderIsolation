@@ -24,6 +24,15 @@ public class EnvironmentUtil {
         }
     }
 
+    public static EnvEnum getEnvBySystemParam(){
+        if(env.get()!=null){
+            return env.get();
+        }else {
+            EnvironmentUtil.setEnvBySystemParam();
+            return env.get();
+        }
+    }
+
 
     public static void setEnv(EnvEnum envEnum){
         if(env.get()!=null){

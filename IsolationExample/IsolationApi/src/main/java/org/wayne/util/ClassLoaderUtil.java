@@ -11,7 +11,10 @@ import java.util.stream.Collectors;
 
 public class ClassLoaderUtil {
     public static <T> T getPluginInstance(Class<T> type){
-        EnvEnum env = EnvironmentUtil.getEnv();
+        //手动设置时用这个
+//        EnvEnum env = EnvironmentUtil.getEnv();
+        //系统参数时用这个
+        EnvEnum env = EnvironmentUtil.getEnvBySystemParam();
         T t = ClassLoaderUtil.getPluginInstanceByEnvironment(type, env);
         return t;
     }
@@ -38,7 +41,10 @@ public class ClassLoaderUtil {
     }
 
     public static Class getPluginClass(Class type){
-        EnvEnum env = EnvironmentUtil.getEnv();
+        //手动设置时用这个
+//        EnvEnum env = EnvironmentUtil.getEnv();
+        //系统参数时用这个
+        EnvEnum env = EnvironmentUtil.getEnvBySystemParam();
         Class aClass = ClassLoaderUtil.getPluginClassByEnvironment(type, env);
         return aClass;
     }
@@ -58,7 +64,10 @@ public class ClassLoaderUtil {
 
 
     public static SelfDefinedClassLoader getSelfDefinedClassLoaderByEnvironment(){
-        EnvEnum env = EnvironmentUtil.getEnv();
+        //手动设置时用这个
+//        EnvEnum env = EnvironmentUtil.getEnv();
+        //系统参数时用这个
+        EnvEnum env = EnvironmentUtil.getEnvBySystemParam();
         SelfDefinedClassLoader loader = ClassLoaderFactory.getSelfDefinedClassLoader(env);
         return loader;
     }

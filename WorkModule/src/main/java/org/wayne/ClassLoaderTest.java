@@ -17,7 +17,21 @@ public class ClassLoaderTest {
     public static void main(String[] args) {
 //        test1();
 //        test2();
-        test3();
+//        test3();
+        test4();
+    }
+
+    /**
+     *
+     *     java -Denv="A"  -cp WorkModule_WithDenpendency.jar org.wayne.ClassLoaderTest
+     *     or
+     *     java -Denv="B"  -cp WorkModule_WithDenpendency.jar org.wayne.ClassLoaderTest
+     */
+    public static void test4(){
+        ClassLoaderTest classLoaderTest = new ClassLoaderTest();
+        //不手动设置了
+//        EnvironmentUtil.setEnvBySystemParam();
+        classLoaderTest.testRegisterAndConnection();
     }
 
     /**
