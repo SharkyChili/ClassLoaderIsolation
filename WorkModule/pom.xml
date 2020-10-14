@@ -24,7 +24,7 @@
     <dependencies>
         <dependency>
             <groupId>org.wayne</groupId>
-            <artifactId>IsolationApi</artifactId>
+            <artifactId>IsolationCore</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 

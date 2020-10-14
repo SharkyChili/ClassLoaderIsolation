@@ -20,7 +20,7 @@
     <modules>
         <module>APlugin</module>
         <module>BPlugin</module>
-        <module>IsolationApi</module>
+        <module>IsolationCore</module>
     </modules>
 
     <properties>

@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>IsolationApi</artifactId>
+    <artifactId>IsolationCore</artifactId>
     <packaging>jar</packaging>
     <name>IsolationApi</name>
     <!-- FIXME change it to the project's website -->
