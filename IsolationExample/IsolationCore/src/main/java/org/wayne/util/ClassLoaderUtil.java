@@ -7,6 +7,8 @@ import org.wayne.enums.EnvEnum;
 
 import java.io.File;
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.ServiceLoader;
 import java.util.stream.Collectors;
 
 public class ClassLoaderUtil {
@@ -48,6 +50,24 @@ public class ClassLoaderUtil {
         Class aClass = ClassLoaderUtil.getPluginClassByEnvironment(type, env);
         return aClass;
     }
+
+    public static <T> T getPluginClassBySpi(Class<T> type){
+        //系统参数时用这个
+        SelfDefinedClassLoader selfDefinedClassLoader = ClassLoaderUtil.getSelfDefinedClassLoaderByEnvironment();
+        ServiceLoader<T> serviceLoader = ServiceLoader.load(type, selfDefinedClassLoader);
+        Iterator<T> iterator = serviceLoader.iterator();
+        T next;
+        if(iterator.hasNext()){
+            next = iterator.next();
+        }else {
+            throw new RuntimeException("没有找到实现类");
+        }
+
+        return next;
+
+    }
+
+
 
     public static Class getPluginClassByEnvironment(Class type, EnvEnum envEnum){
         SelfDefinedClassLoader loader = ClassLoaderFactory.getSelfDefinedClassLoader(envEnum);

@@ -71,4 +71,17 @@ public class SelfDefinedClassLoader extends URLClassLoader {
         }
         return c;
     }
+
+
+
+/*    @Override
+    public URL getResource(String name) {
+        URL url = findResource(name);
+
+        // if local search failed, delegate to parent
+        if (url == null) {
+            url = getParent().getResource(name);
+        }
+        return url;
+    }*/
 }

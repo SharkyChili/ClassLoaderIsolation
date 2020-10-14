@@ -14,6 +14,9 @@
             <useProjectArtifact>true</useProjectArtifact>
             <unpack>true</unpack>
             <scope>runtime</scope>
+            <excludes>
+                <exclude>org.wayne:IsolationApi</exclude>
+            </excludes>
         </dependencySet>
         <!-- 增加scope类型为system的配置 -->
         <dependencySet>
@@ -21,6 +24,9 @@
             <useProjectArtifact>true</useProjectArtifact>
             <unpack>true</unpack>
             <scope>system</scope>
+            <excludes>
+                <exclude>org.wayne:IsolationApi</exclude>
+            </excludes>
         </dependencySet>
     </dependencySets>
 </assembly>

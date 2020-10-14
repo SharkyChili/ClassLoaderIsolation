@@ -1,15 +1,14 @@
 package org.wayne;
 
-import org.wayne.classloader.ClassLoaderFactory;
 import org.wayne.classloader.SelfDefinedClassLoader;
 import org.wayne.enums.EnvEnum;
+import org.wayne.inter.ServiceOne;
 import org.wayne.util.ClassLoaderUtil;
 import org.wayne.util.EnvironmentUtil;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -18,16 +17,51 @@ public class ClassLoaderTest {
 //        test1();
 //        test2();
 //        test3();
-        test4();
+//        test4();
+//        test5();
+        test6();
     }
 
     /**
-     *
-     *     java -Denv="A"  -cp WorkModule_WithDenpendency.jar org.wayne.ClassLoaderTest
-     *     or
-     *     java -Denv="B"  -cp WorkModule_WithDenpendency.jar org.wayne.ClassLoaderTest
+     * java  -cp WorkModule_WithDenpendency.jar org.wayne.ClassLoaderTest
      */
-    public static void test4(){
+    public static void test6() {
+        ClassLoaderTest classLoaderTest = new ClassLoaderTest();
+        EnvironmentUtil.setEnv(EnvEnum.A);
+        ServiceOne aClass = ClassLoaderUtil.getPluginClassBySpi(ServiceOne.class);
+        classLoaderTest.testSpiUtil(aClass);
+        EnvironmentUtil.clearEnv();
+
+        System.out.println("*****************************");
+
+        EnvironmentUtil.setEnv(EnvEnum.B);
+        ServiceOne bClass = ClassLoaderUtil.getPluginClassBySpi(ServiceOne.class);
+        classLoaderTest.testSpiUtil(bClass);
+        EnvironmentUtil.clearEnv();
+    }
+
+    /**
+     * java -Denv="A"  -cp WorkModule_WithDenpendency.jar org.wayne.ClassLoaderTest
+     * or
+     * java -Denv="B"  -cp WorkModule_WithDenpendency.jar org.wayne.ClassLoaderTest
+     */
+    public static void test5() {
+        ClassLoaderTest classLoaderTest = new ClassLoaderTest();
+        ServiceOne aClass = ClassLoaderUtil.getPluginClassBySpi(ServiceOne.class);
+        classLoaderTest.testSpiUtil(aClass);
+    }
+
+    private void testSpiUtil(ServiceOne aClass) {
+        aClass.get();
+    }
+
+
+    /**
+     * java -Denv="A"  -cp WorkModule_WithDenpendency.jar org.wayne.ClassLoaderTest
+     * or
+     * java -Denv="B"  -cp WorkModule_WithDenpendency.jar org.wayne.ClassLoaderTest
+     */
+    public static void test4() {
         ClassLoaderTest classLoaderTest = new ClassLoaderTest();
         //不手动设置了
 //        EnvironmentUtil.setEnvBySystemParam();
@@ -35,20 +69,18 @@ public class ClassLoaderTest {
     }
 
     /**
-     *
-     *     java -Denv="A"  -cp WorkModule_WithDenpendency.jar org.wayne.ClassLoaderTest
-     *     or
-     *     java -Denv="B"  -cp WorkModule_WithDenpendency.jar org.wayne.ClassLoaderTest
+     * java -Denv="A"  -cp WorkModule_WithDenpendency.jar org.wayne.ClassLoaderTest
+     * or
+     * java -Denv="B"  -cp WorkModule_WithDenpendency.jar org.wayne.ClassLoaderTest
      */
-    public static void test3(){
+    public static void test3() {
         ClassLoaderTest classLoaderTest = new ClassLoaderTest();
         EnvironmentUtil.setEnvBySystemParam();
         classLoaderTest.testRegisterAndConnection();
     }
 
 
-
-    public static void test2(){
+    public static void test2() {
         ClassLoaderTest classLoaderTest = new ClassLoaderTest();
         EnvironmentUtil.setEnv(EnvEnum.A);
         classLoaderTest.testRegisterAndConnection();
@@ -62,7 +94,7 @@ public class ClassLoaderTest {
 
     }
 
-    public void testRegisterAndConnection(){
+    public void testRegisterAndConnection() {
         RegisterDriverUtil.register("org.wayne.Driver");
 
         Connection connection = null;
@@ -84,17 +116,17 @@ public class ClassLoaderTest {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        if(statement!=null){
+        if (statement != null) {
             System.out.println("statement : " + statement);
             System.out.println("statement : " + statement.getClass().getName());
             System.out.println("statement : " + statement.getClass().getClassLoader());
             //System.out.println("Statement Class : " + Statement.class.getClassLoader());
-        }else {
+        } else {
             System.out.println("statement : null");
         }
     }
 
-    public static void test1(){
+    public static void test1() {
         ClassLoaderTest classLoaderTest = new ClassLoaderTest();
         EnvironmentUtil.setEnv(EnvEnum.A);
         classLoaderTest.testCL();
@@ -106,7 +138,7 @@ public class ClassLoaderTest {
     }
 
 
-    public void testCL(){
+    public void testCL() {
         SelfDefinedClassLoader loader = ClassLoaderUtil.getSelfDefinedClassLoaderByEnvironment();
         //SelfDefinedClassLoader loader = ClassLoaderFactory.getSelfDefinedClassLoader(envEnum);
         Class<?> aClass = null;
