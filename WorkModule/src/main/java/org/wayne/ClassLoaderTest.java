@@ -75,7 +75,7 @@ public class ClassLoaderTest {
         System.out.println("connection : " + connection);
         System.out.println("connection : " + connection.getClass().getName());
         System.out.println("connection : " + connection.getClass().getClassLoader());
-        System.out.println("Connection Class : " + Connection.class.getClassLoader());
+        //System.out.println("Connection Class : " + Connection.class.getClassLoader());
         System.out.println("----");
 
         Statement statement = null;
@@ -88,7 +88,7 @@ public class ClassLoaderTest {
             System.out.println("statement : " + statement);
             System.out.println("statement : " + statement.getClass().getName());
             System.out.println("statement : " + statement.getClass().getClassLoader());
-            System.out.println("Statement Class : " + Statement.class.getClassLoader());
+            //System.out.println("Statement Class : " + Statement.class.getClassLoader());
         }else {
             System.out.println("statement : null");
         }
