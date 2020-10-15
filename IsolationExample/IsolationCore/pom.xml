@@ -11,7 +11,7 @@
 
     <artifactId>IsolationCore</artifactId>
     <packaging>jar</packaging>
-    <name>IsolationApi</name>
+    <name>IsolationCore</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
     <properties>

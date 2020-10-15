@@ -4,6 +4,7 @@ import org.wayne.classloader.SelfDefinedClassLoader;
 import org.wayne.enums.EnvEnum;
 import org.wayne.inter.ServiceOne;
 import org.wayne.util.ClassLoaderUtil;
+import org.wayne.util.DynamicDriverUtil;
 import org.wayne.util.EnvironmentUtil;
 
 import java.lang.reflect.InvocationTargetException;
@@ -19,7 +20,33 @@ public class ClassLoaderTest {
 //        test3();
 //        test4();
 //        test5();
-        test6();
+//        test6();
+        test7();
+    }
+
+    /**
+     * java  -cp WorkModule_WithDenpendency.jar org.wayne.ClassLoaderTest
+     */
+    public static void test7(){
+        try {
+            EnvironmentUtil.setEnv(EnvEnum.A);
+            DynamicDriverUtil.registerDriver("org.wayne.Driver");
+            Connection connection1 = DynamicDriverUtil.getConnection("jdbc:wayne://172.19.1.49:7300/dwtmppdb");
+            System.out.println(connection1);
+            System.out.println(connection1.getClass());
+            EnvironmentUtil.clearEnv();
+
+            System.out.println("*****************************");
+
+            EnvironmentUtil.setEnv(EnvEnum.B);
+            DynamicDriverUtil.registerDriver("org.wayne.Driver");
+            Connection connection2 = DynamicDriverUtil.getConnection("jdbc:wayne://172.19.1.49:7300/dwtmppdb");
+            System.out.println(connection2);
+            System.out.println(connection2.getClass());
+            EnvironmentUtil.clearEnv();
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
     }
 
     /**
