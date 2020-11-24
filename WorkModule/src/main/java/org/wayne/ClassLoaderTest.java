@@ -21,7 +21,17 @@ public class ClassLoaderTest {
 //        test4();
 //        test5();
 //        test6();
-        test7();
+//        test7();
+        test8();
+    }
+
+    /**
+     * java  -cp WorkModule_WithDenpendency.jar org.wayne.ClassLoaderTest
+     */
+    public static void test8(){
+        EnvironmentUtil.setEnv(EnvEnum.A);
+        RegisterDriverUtil.register("java.lang.String");
+        EnvironmentUtil.clearEnv();
     }
 
     /**
